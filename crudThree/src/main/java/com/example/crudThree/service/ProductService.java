@@ -1,7 +1,7 @@
-package main.java.com.example.crudThree.service;
+package com.example.crudThree.service;
 
-import com.javatechie.crud.example.entity.Product;
-import com.javatechie.crud.example.repository.ProductRepository;
+import com.example.crudThree.entity.Product;
+import com.example.crudThree.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +40,9 @@ public class ProductService {
 
     public Product updateProduct(Product product) {
         Product existingProduct = repository.findById(product.getId()).orElse(null);
+        assert existingProduct != null;
         existingProduct.setName(product.getName());
-        existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setQuantiy(product.getQuantity());
         existingProduct.setPrice(product.getPrice());
         return repository.save(existingProduct);
     }
